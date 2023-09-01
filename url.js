@@ -15,9 +15,10 @@ const loadData =async()=>{
     const buttons=document.createElement('button')
     buttons.classList=''
     buttons.innerHTML=`
-    <button onclick="loadCards(${name.category_id})" class="btn btn-outline btn-error text-cente">'${name.category}'</button>`
+    <button onclick="loadCards('${name.category_id}')" class="btn btn-outline btn-error text-cente">${name.category}</button>`
     
       categoryButton.appendChild(buttons)
+      
    });
 }
 
@@ -29,7 +30,7 @@ const loadCards=async(id)=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`) ;
     const data = await res.json();
     const dataCard=data.data
-    console.log(dataCard.length)
+    // console.log(dataCard)
     if(dataCard.length>0){
         const noData=document.getElementById('no-data');
         noData.innerHTML=''
@@ -40,7 +41,13 @@ const loadCards=async(id)=>{
     }
     
 }
+ const img =()=>{
 
+    const img=document.createElement('img');
+    img.innerHTML=` <img class='' src=" fi_10629607.png" alt="">
+    <p class='text-xl  '>'hi'</p>`
+    document.getElementById('in').appendChild(img)
+ }
 
 // .....use the function for show data in ui....
 
@@ -53,35 +60,49 @@ const loadCards=async(id)=>{
     dataCard.forEach(item=>{
         // console.log(item)
         // console.log(item.authors[0].verified)
+        console.log(item?.others?.posted_date)
+        // console.log(item.title)
+        // console.log( item.title)
+        
         
         
         const cardDisplay =document.createElement('div');
-        cardDisplay.classList='card card-compact  bg-base-100 shadow-xl'
+        cardDisplay.classList='card card-compact  bg-base-100 shadow-xl '
         cardDisplay.innerHTML=`
-        <figure><img class='w-full h-60' src="${item.thumbnail}" alt="Shoes" /></figure>
+        <figure><img class='w-full h-60' src="${item.thumbnail}" alt="Shoes" />
+            
+        </figure>
         
-        <div class="card-body ">
-        <div class="flex gap-4">
-        <div class="">
+        <div class="card-body  ">
+        <div id='time-card' class=" grid justify-items-end ">
+          <p class="bg-black text-white rounded-lg p-2 h-10 w-40 -mt-20 "> 2 hours 36 min ago</p>
+        </div>
+        </div>
+        
+       
+        
+        <div class="flex gap-4 p-3">
+         <div class="">
         <img class='rounded-full h-20 w-28' src="${item.authors[0].profile_picture}" alt="">
-    </div>
+           </div>
     <div class="space-y-2 w-full ">
-        <h2 class="card-title text-2xl">'${item.title}'</h2>
-        <div class="flex">
-            <p class='text-xl  '>'${item.authors[0].profile_name}'</p>
-            
-                <img class='' src=" fi_10629607.png" alt="">
-            
+        <h2 class="card-title font-semibold text-2xl">${item.title}</h2>
+        <div class="flex gap-3">
+            <p class='text-xl'>${item.authors[0].profile_name} </p>
+
+            <img class='' src="${item.authors[0]?.verified?'fi_10629607.png':''} " alt="">
             
         </div>
-        <p class='text-xl'> <span>'${item?.others?.views}'</span> views</p>
-    </div>
+        <p class='text-xl'> <span>${item?.others?.views}</span> views</p>
+       </div>
           </div>
             
         </div>
         `;
         display.appendChild(cardDisplay)
-    })
+        
+    });
+    
 }
 
 // ....use the function when can't find data...
@@ -96,6 +117,27 @@ const nothing=()=>{
          `;
          noData.appendChild(notFound);
 }
+
+// const timeCard=async(id)=>{
+    
+//     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`) ;
+//     const data = await res.json();
+//     const dataCard=data.data
+//     console.log(dataCard)
+//     dataCard.forEach(card =>{
+//         console.log()
+//     })
+
+
+    // appent the time tag
+    // const card =document.getElementById('time-card')
+    // const maketag=document.createElement('p')
+    // maketag.classList='bg-black text-white rounded-lg p-2 h-10 w-40'
+    // maketag.innerHTML=`
+    // <p > 2hour 35 min ago</p>
+    // `
+    // card.appendChild(maketag)
+
 
 
 loadData()
