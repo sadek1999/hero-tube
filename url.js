@@ -16,7 +16,7 @@ const loadData =async()=>{
     buttons.classList=''
     buttons.innerHTML=`
     <button onclick="loadCards('${name.category_id}')" class="btn btn-outline btn-error text-cente">${name.category}</button>`
-    
+       loadCards(1000);
       categoryButton.appendChild(buttons)
       
    });
@@ -27,10 +27,22 @@ const loadData =async()=>{
 // ...use the function for load the card info by API...
 
 const loadCards=async(id)=>{
+    
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`) ;
     const data = await res.json();
     const dataCard=data.data
-    // console.log(dataCard)
+    console.log(dataCard)
+    // dataCard.forEach(v=>{
+    //     console.log(v?.others?.views)
+    // })
+    
+ 
+    console.log(dataCard[1].others.views)
+    let x =dataCard.sort((a,b) => (b.others.views) ? 1 : ((a.others.views > b.others.views) ? -1 : 0));
+    console.log(x)
+
+
+
     if(dataCard.length>0){
         const noData=document.getElementById('no-data');
         noData.innerHTML=''
@@ -60,7 +72,22 @@ const loadCards=async(id)=>{
     dataCard.forEach(item=>{
         // console.log(item)
         // console.log(item.authors[0].verified)
-        console.log(item?.others?.posted_date)
+        // console.log(item?.others?.posted_date)
+        //  console.log(item?.others?.views)
+        
+
+        if(item?.others?.posted_date){
+            let time=item?.others?.posted_date;
+            let hours = Math.floor(time/3600) ;
+            let   sec= time%3600;
+            let min =Math.floor(sec/60)
+            // console.log(hours ,'hours', min ,+'min ago')
+        }
+        else{
+        //    console.log('no')
+        }
+
+
         // console.log(item.title)
         // console.log( item.title)
         
@@ -73,11 +100,10 @@ const loadCards=async(id)=>{
             
         </figure>
         
-        <div class="card-body  ">
-        <div id='time-card' class=" grid justify-items-end ">
-          <p class="bg-black text-white rounded-lg p-2 h-10 w-40 -mt-20 "> 2 hours 36 min ago</p>
-        </div>
-        </div>
+        
+            
+
+       
         
        
         
@@ -118,26 +144,14 @@ const nothing=()=>{
          noData.appendChild(notFound);
 }
 
-// const timeCard=async(id)=>{
-    
-//     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`) ;
-//     const data = await res.json();
-//     const dataCard=data.data
-//     console.log(dataCard)
-//     dataCard.forEach(card =>{
-//         console.log()
-//     })
+const timeCount=(time)=>{
 
-
-    // appent the time tag
-    // const card =document.getElementById('time-card')
-    // const maketag=document.createElement('p')
-    // maketag.classList='bg-black text-white rounded-lg p-2 h-10 w-40'
-    // maketag.innerHTML=`
-    // <p > 2hour 35 min ago</p>
-    // `
-    // card.appendChild(maketag)
-
+}
 
 
 loadData()
+{/* <div class="card-body  ">
+            <div id='time-card' class=" grid justify-items-end ">
+              <p class="bg-black text-white rounded-lg p-2 h-10 w-40 -mt-20 "> 2 hours 36 min ago</p>
+            </div>
+            </div> */}
