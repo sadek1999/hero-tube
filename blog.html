@@ -9,9 +9,38 @@
 </head>
 <body>
     <head>
-         <h1>Disc</h1>
+         
     </head>
     <main>
+      <div class="container mx-auto">
+        <h2 class="text-center text-3xl font-bold "> scope of var, let, and const</h2>
+        <p class="text-2xl font-semibold"> var </p>
+        <ul class="text-xl w-4/5">
+          <li>Function-scoped: Variables declared with var are function-scoped, meaning they are only accessible within the function in which they are declared.</li>
+          <li>
+            Hoisting: Variables declared with var are hoisted to the top of their containing function or global scope. This means you can use them before they are declared, but they will be initialized with the value undefined.
+          </li>
+        </ul>
+        <p> Let </p>
+        <ul>
+          <li>Block-scoped: Variables declared with let are block-scoped, which means they are accessible only within the block (enclosed by curly braces) in which they are declared.</li>
+          <li>
+            Hoisting: Variables declared with let are also hoisted but are not initialized until they are declared in the code. Accessing them before declaration will result in a ReferenceError.
+          </li>
+        </ul>
+        <p>Const</p>
+        <ul>
+          <li>Block-scoped: Like let, variables declared with const are block-scoped.</li>
+          <li>Constants: Variables declared with const are constants, meaning their values cannot be reassigned once they are initialized. However, it's important to note that for objects and arrays declared with const, their properties or elements can still be modified.</li>
+          <li>Hoisting: Variables declared with const are hoisted but not initialized until they are declared. As with let, accessing them before declaration will result in a ReferenceError.</li>
+        </ul>
+        <p>In summary, var has a function scope and is hoisted, which can sometimes lead to unexpected behavior. let and const have block scope and are also hoisted but have stricter rules regarding reassignment (const) and accessing variables before declaration. In modern JavaScript, it is recommended to use let and const over var for better code clarity and to avoid potential issues associated with var. The choice between let and const depends on whether you need to reassign the variable's value or not.
+
+
+
+
+        </p>
+      </div>
 
     </main>
     <button onclick="location.href='index.html'" class="btn btn-error text-white">Home</button>

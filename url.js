@@ -1,4 +1,6 @@
-
+let s = false
+let a=0;
+let c=0;
 
 const loadData =async()=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
@@ -24,42 +26,38 @@ const loadData =async()=>{
 
 
 
+
 // ...use the function for load the card info by API...
 
 const loadCards=async(id)=>{
+    a=id;
+    
     
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`) ;
     const data = await res.json();
-    const dataCard=data.data
-    console.log(dataCard)
-    // dataCard.forEach(v=>{
-    //     console.log(v?.others?.views)
-    // })
+    const dataCards=data.data
+    // console.log(dataCard)
+    // console.log(s);
     
- 
-    console.log(dataCard[1].others.views)
-    let x =dataCard.sort((a,b) => (b.others.views) ? 1 : ((a.others.views > b.others.views) ? -1 : 0));
-    console.log(x)
 
-
-
-    if(dataCard.length>0){
+    if(dataCards.length>0 ){
         const noData=document.getElementById('no-data');
         noData.innerHTML=''
-        displayCard(dataCard)
+        if(s){
+            let x =dataCards.sort((a,b)=>( parseFloat(b.others.views)-parseFloat(a.others.views) ))
+            //  console.log(x)
+    
+            displayCard(x)
+        }
+        else{
+            displayCard(dataCards)
+        }
+        
     }
-    else{
-        nothing()
-    }
+    else{ nothing() }
     
 }
- const img =()=>{
-
-    const img=document.createElement('img');
-    img.innerHTML=` <img class='' src=" fi_10629607.png" alt="">
-    <p class='text-xl  '>'hi'</p>`
-    document.getElementById('in').appendChild(img)
- }
+ 
 
 // .....use the function for show data in ui....
 
@@ -70,10 +68,7 @@ const loadCards=async(id)=>{
      display.innerHTML=''  
 
     dataCard.forEach(item=>{
-        // console.log(item)
-        // console.log(item.authors[0].verified)
-        // console.log(item?.others?.posted_date)
-        //  console.log(item?.others?.views)
+        
         
 
         if(item?.others?.posted_date){
@@ -81,31 +76,18 @@ const loadCards=async(id)=>{
             let hours = Math.floor(time/3600) ;
             let   sec= time%3600;
             let min =Math.floor(sec/60)
-            // console.log(hours ,'hours', min ,+'min ago')
+            console.log(hours ,'hours', min ,+'min ago')
         }
         else{
-        //    console.log('no')
+        
         }
 
-
-        // console.log(item.title)
-        // console.log( item.title)
-        
-        
-        
         const cardDisplay =document.createElement('div');
         cardDisplay.classList='card card-compact  bg-base-100 shadow-xl '
         cardDisplay.innerHTML=`
-        <figure><img class='w-full h-60' src="${item.thumbnail}" alt="Shoes" />
+        <figure><img class='w-full h-48 md:h-40 lg:h-60' src="${item.thumbnail}" alt="Shoes" />
             
         </figure>
-        
-        
-            
-
-       
-        
-       
         
         <div class="flex gap-4 p-3">
          <div class="">
@@ -128,11 +110,12 @@ const loadCards=async(id)=>{
         display.appendChild(cardDisplay)
         
     });
-    
+   
 }
 
 // ....use the function when can't find data...
 const nothing=()=>{
+    document.getElementById('no-data').innerHTML='';
     const display=document.getElementById("display-card")
       display.innerHTML=''
       const noData=document.getElementById('no-data');
@@ -144,14 +127,20 @@ const nothing=()=>{
          noData.appendChild(notFound);
 }
 
-const timeCount=(time)=>{
 
+
+
+//  for show data in sort ....
+const sorttheData=()=>{
+    s=true
+    loadCards(a)
 }
 
-
 loadData()
-{/* <div class="card-body  ">
+
+/* <div class="card-body  ">
             <div id='time-card' class=" grid justify-items-end ">
               <p class="bg-black text-white rounded-lg p-2 h-10 w-40 -mt-20 "> 2 hours 36 min ago</p>
             </div>
-            </div> */}
+            </div> */
+            
