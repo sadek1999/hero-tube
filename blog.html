@@ -11,37 +11,37 @@
     <head>
          
     </head>
-    <main class="mt-10">
+    <main class="mt-10 space-y-5">
       <div class="container mx-auto space-y-2">
         <h2 class="text-center text-3xl font-bold "> scope of var, let, and const</h2>
         <p class="text-2xl font-semibold"> var </p>
-        <ul class="text-xl w-4/5 space-y-3">
+        <ul class="text-xl  space-y-3">
           <li>Function-scoped: Variables declared with var are function-scoped, meaning they are only accessible within the function in which they are declared.</li>
           <li>
             Hoisting: Variables declared with var are hoisted to the top of their containing function or global scope. This means you can use them before they are declared, but they will be initialized with the value undefined.
           </li>
         </ul>
         <p class="text-2xl font-semibold"> Let </p>
-        <ul class="text-xl w-4/5 space-y-3">
+        <ul class="text-xl  space-y-3">
           <li>Block-scoped: Variables declared with let are block-scoped, which means they are accessible only within the block (enclosed by curly braces) in which they are declared.</li>
           <li>
             Hoisting: Variables declared with let are also hoisted but are not initialized until they are declared in the code. Accessing them before declaration will result in a ReferenceError.
           </li>
         </ul>
         <p class="text-2xl font-semibold">Const</p>
-        <ul class="text-xl w-4/5 space-y-3">
+        <ul class="text-xl space-y-3">
           <li>Block-scoped: Like let, variables declared with const are block-scoped.</li>
           <li>Constants: Variables declared with const are constants, meaning their values cannot be reassigned once they are initialized. However, it's important to note that for objects and arrays declared with const, their properties or elements can still be modified.</li>
           <li>Hoisting: Variables declared with const are hoisted but not initialized until they are declared. As with let, accessing them before declaration will result in a ReferenceError.</li>
         </ul>
         <p class="text-2xl font-semibold">Summary</p>
-        <p class="text-xl w-4/5">In summary, var has a function scope and is hoisted, which can sometimes lead to unexpected behavior. let and const have block scope and are also hoisted but have stricter rules regarding reassignment (const) and accessing variables before declaration. In modern JavaScript, it is recommended to use let and const over var for better code clarity and to avoid potential issues associated with var. The choice between let and const depends on whether you need to reassign the variable's value or not.
+        <p class="text-xl">In summary, var has a function scope and is hoisted, which can sometimes lead to unexpected behavior. let and const have block scope and are also hoisted but have stricter rules regarding reassignment (const) and accessing variables before declaration. In modern JavaScript, it is recommended to use let and const over var for better code clarity and to avoid potential issues associated with var. The choice between let and const depends on whether you need to reassign the variable's value or not.
            </p>
       </div>
       <div  class="container mx-auto space-y-2 mt-4">
         <h2 class="text-3xl font-bold text-center"> the use cases of null and undefined</h2>
         <p class="text-2xl font-semibold">Null</p>
-        <ol class="text-xl w-4/5 space-y-3">
+        <ol class="text-xl space-y-3">
           <li>null is a value that explicitly indicates the absence of any object value or a variable that has not been assigned a value.</li>
           <li>
             It is often used to initialize a variable when you want to indicate that it currently has no meaningful value.
@@ -54,13 +54,24 @@
          </li>
         </ol>
         <p class="text-2xl font-semibold">undefined</p>
-        <ol class="text-xl w-4/5 space-y-3">
+        <ol class="text-xl  space-y-3">
           <li>undefined is a primitive value that indicates a variable has been declared but has not been assigned any value. It is also the default value of function parameters that have not been provided when the function is called.</li>
           <li>It is often used to check if a variable exists or has been defined, especially in conditional statements.</li>
           <li>
             It can occur when you try to access a property that doesn't exist on an object, or when you try to access an array element beyond its length.
           </li>
         </ol>
+      </div>
+      <div class="container mx-auto space-y-2 mt-4">
+        <h3 class="text-3xl font-bold text-center">What do you mean by REST API?</h3>
+        <p class="text-xl">REST API stands for Representational State Transfer Application Programming Interface. It is an architectural style and a set of constraints for designing and interacting with web services. REST is not a technology or a protocol; it's a set of principles and constraints that help developers create scalable and stateless web services. Here are the key concepts and principles of REST:</p>
+        <ul class="text-xl w-4/5 space-y-3">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+
       </div>
 
     </main>

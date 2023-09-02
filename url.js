@@ -70,18 +70,6 @@ const loadCards=async(id)=>{
     dataCard.forEach(item=>{
         
         
-
-        if(item?.others?.posted_date){
-            let time=item?.others?.posted_date;
-            let hours = Math.floor(time/3600) ;
-            let   sec= time%3600;
-            let min =Math.floor(sec/60)
-            console.log(hours ,'hours', min ,+'min ago')
-        }
-        else{
-        
-        }
-
         const cardDisplay =document.createElement('div');
         cardDisplay.classList='card card-compact  bg-base-100 shadow-xl '
         cardDisplay.innerHTML=`
@@ -89,7 +77,7 @@ const loadCards=async(id)=>{
         
         </figure>
         <div class="grid justify-end ">
-        <p class=" bg-black text-white  h-7 -mt-10 mr-8 text-xl"> ${item?.others?. posted_date?  Math.floor(item?.others?.posted_date/3600)+'  hours'+ Math.floor((item?.others?.posted_date%3600)/60)+'  min ago' :''} </p>
+        <p class=" bg-black text-white  h-7 -mt-10 mr-8 text-xl rounded-lg"> ${item?.others?. posted_date?  Math.floor(item?.others?.posted_date/3600)+'  hours'+ Math.floor((item?.others?.posted_date%3600)/60)+'  min ago' :''} </p>
       </div>
         
         <div class="flex gap-4 p-3">
@@ -141,9 +129,5 @@ const sorttheData=()=>{
 
 loadData()
 
-/* <div class="card-body  ">
-            <div id='time-card' class=" grid justify-items-end ">
-              <p class="bg-black text-white rounded-lg p-2 h-10 w-40 -mt-20 "> 2 hours 36 min ago</p>
-            </div>
-            </div> */
+
             
