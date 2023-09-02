@@ -86,8 +86,11 @@ const loadCards=async(id)=>{
         cardDisplay.classList='card card-compact  bg-base-100 shadow-xl '
         cardDisplay.innerHTML=`
         <figure><img class='w-full h-48 md:h-40 lg:h-60' src="${item.thumbnail}" alt="Shoes" />
-            
+        
         </figure>
+        <div class="grid justify-end ">
+        <p class=" bg-black text-white  h-7 -mt-10 mr-8 text-xl"> ${item?.others?. posted_date?  Math.floor(item?.others?.posted_date/3600)+'  hours'+ Math.floor((item?.others?.posted_date%3600)/60)+'  min ago' :''} </p>
+      </div>
         
         <div class="flex gap-4 p-3">
          <div class="">
